@@ -1,13 +1,11 @@
 package {
 	
-	import caurina.transitions.Tweener;
-	
-	import com.shen.player.PlayerFacade;
-	import com.shen.player.model.constant.PlayerState;
-	import com.shen.player.view.ui.control.ControlBar;
-	import com.shen.player.view.ui.control.ProgressBar;
-	import com.shen.player.view.ui.side.SideBar;
-	import com.shen.player.view.ui.video.VideoBox;
+	import com.shen100.player.PlayerFacade;
+	import com.shen100.player.model.constant.PlayerState;
+	import com.shen100.player.view.ui.control.ControlBar;
+	import com.shen100.player.view.ui.control.ProgressBar;
+	import com.shen100.player.view.ui.side.SideBar;
+	import com.shen100.player.view.ui.video.VideoBox;
 	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -15,6 +13,8 @@ package {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.utils.getTimer;
+	
+	import caurina.transitions.Tweener;
 	
 	[SWF(width="610", height="500", backgroundColor="#999999", frameRate="30")]
 	//[SWF(width="930", height="500", frameRate="30")]
@@ -153,6 +153,7 @@ package {
 		}
 	}
 }
+
 
 
 
