@@ -167,6 +167,11 @@ package com.shen100.player.model.delegate {
 		public function onXMPData(infoObject:Object):void {
 			
 		}
+		
+		public function onPlayStatus(infoObject:Object):void { 
+			trace();
+		} 
+
 	
 		private function onNetStatus(event:NetStatusEvent):void {
 			var msg:String = "[" + _index + "]"+ event.info.code;

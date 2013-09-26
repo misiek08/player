@@ -6,9 +6,12 @@ package com.shen100.player.controller {
 	import com.shen100.player.model.PlayerProxy;
 	import com.shen100.player.model.SharedObjectProxy;
 	import com.shen100.player.model.SystemProxy;
+	import com.shen100.player.model.constant.PlayerType;
 	import com.shen100.player.model.constant.VideoScaleMode;
+	import com.shen100.player.model.vo.AdvertVO;
 	import com.shen100.player.model.vo.CHSBVO;
 	import com.shen100.player.model.vo.SettingVO;
+	import com.shen100.player.utils.JavaScriptUtil;
 	
 	import flash.net.registerClassAlias;
 	import flash.system.Capabilities;
@@ -59,7 +62,24 @@ package com.shen100.player.controller {
 				playerProxy.ifAutoBitrate = true;	
 			}
 			
-			
+			var advertVO:AdvertVO = new AdvertVO();
+			if(data.adss == "0") {
+				advertVO.adCode = "0000";
+			}else {
+				if(data.adss == "1" || !data.adss || isNaN(Number(data.adss))) {
+					advertVO.adCode = "1111";
+				}else {
+					var code:String = ("1111" + data.adss).substr(-4, 4);
+					advertVO.adCode = code;
+				}
+				var pageAdMode:Object = JavaScriptUtil.call("function(){return App.VideoInfo.AdMode;}");
+				if(pageAdMode){
+					advertVO.adStr = pageAdMode.toString();
+				}
+			}
+			if(playerProxy.PLAYER_TYPE == PlayerType.OUT && !JavaScriptUtil.jsAvailable) {
+				advertVO.adCode = "1111";	
+			}
 			
 			playerProxy.vid				 = data.vid;
 			playerProxy.ifPreload 		 = data.preload    == "0" ? false : true;

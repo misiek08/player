@@ -58,8 +58,9 @@ package com.shen100.player.view {
 			sendNotification(PlayerFacade.LOAD_VIDEOINFO, vid);
 		}
 		
-		private function pause():void {
+		private function pause():String {
 			sendNotification(PlayerFacade.PAUSE);
+			return "hi pause";
 		}
 		
 		private function resume():void {

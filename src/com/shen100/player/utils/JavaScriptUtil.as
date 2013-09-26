@@ -50,10 +50,21 @@ package com.shen100.player.utils {
 			}	
 		}
 		
-		//改变flash尺寸大小
-		public static function setPlayerSize(width:Number, height:Number):void {
+		//域名
+		public static function get domain():String {
 			if(jsAvailable) {
-				ExternalInterface.call("setSize", width, height);
+				return ExternalInterface.call("function(){return document.domain;}");
+			}else {
+				return "";
+			}	
+		}
+		
+		//网站的标题
+		public static function get title():String {
+			if(jsAvailable) {
+				return ExternalInterface.call("function(){return document.title;}");
+			}else {
+				return "";
 			}	
 		}
 		
@@ -73,6 +84,13 @@ package com.shen100.player.utils {
 			}
 		}
 		
+		//改变flash尺寸大小
+		public static function setPlayerSize(width:Number, height:Number):void {
+			if(jsAvailable) {
+				ExternalInterface.call("setSize", width, height);
+			}	
+		}
+		
 		//开灯
 		public static function turnOn():void {
 			if(jsAvailable) {
@@ -85,6 +103,16 @@ package com.shen100.player.utils {
 			if(jsAvailable) {
 				ExternalInterface.call("turnoff");
 			}	
+		}
+		
+		public static function call(functionName:String, ...arguments):* {
+			if(jsAvailable) {
+				var args:Array = arguments;
+				args.unshift(functionName);
+				return ExternalInterface.call.apply(null, args);
+			}else {
+				return undefined;	
+			}
 		}
 	}
 }

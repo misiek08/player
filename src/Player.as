@@ -94,6 +94,9 @@ package {
 		
 		//设置播放器大小
 		public function setSize(width:Number, height:Number):void {
+			trace("setSize 1234");
+			trace("width:" + width);
+			trace("height:" + height);
 			_playerWidth = width;
 			_playerHeight = height;	
 			var videoBoxHeight:Number = height;
@@ -151,6 +154,14 @@ package {
 		public function get playerHeight():Number {
 			return _playerHeight;
 		}
+		
+		override public function get width():Number {
+			return _playerWidth;
+		}
+		
+		override public function get height():Number {
+			return _playerHeight;
+		} 
 	}
 }
 

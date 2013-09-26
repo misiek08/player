@@ -5,8 +5,10 @@ package com.shen100.player.model {
 	import com.shen100.core.net.HttpService;
 	import com.shen100.player.conf.ApplicationConfig;
 	import com.shen100.player.model.constant.PlayerState;
+	import com.shen100.player.model.constant.PlayerType;
 	import com.shen100.player.model.delegate.VideoSegmentDel;
 	import com.shen100.player.model.events.NetStreamEvent;
+	import com.shen100.player.model.vo.AdvertVO;
 	import com.shen100.player.model.vo.BitrateVO;
 	import com.shen100.player.model.vo.CHSBVO;
 	import com.shen100.player.model.vo.VideoVO;
@@ -38,14 +40,17 @@ package com.shen100.player.model {
 		
 		public static const PLAYER_STATE_CHANGED:String 		= "playerStateChanged";
 		
+		public const PLAYER_TYPE:String 	= PlayerType.OUT;
+		
 		private const PLAYER_NAME:String 	= "ShenPlayer";
 		private const MAJOR:int 			= 1;
 		private const MINOR:int 			= 1;
-		private const REVISION:int 			= 22;
+		private const REVISION:int 			= 24;
 		
 		private const YUNFAN_NAME:String 	= "云帆";
 		
 		public var vid:String;
+		public var advertVO:AdvertVO;
 		public var chsbVO:CHSBVO;
 		public var selectBitrate:Number;	//用户选择的码率
 		public var ifAutoBitrate:Boolean;	//是否开启自动码率功能
